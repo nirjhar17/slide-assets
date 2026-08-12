@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 1440" width="2560" height="1440">
+<rect x="0" y="0" width="2560" height="1440" fill="#FFFFFF"/>
+<text x="218.0" y="86.4" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#1F1F1F" text-anchor="start">Component</text>
+<text x="954.6" y="86.4" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#1F1F1F" text-anchor="start">Namespace (ns-*)</text>
+<text x="1415.0" y="86.4" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#1F1F1F" text-anchor="start">Purpose</text>
+<line x1="210.0" y1="109.6" x2="2512.0" y2="109.6" stroke="#8A8A8A" stroke-width="2"/>
+<text x="218.0" y="132.0" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">Active Directory</text>
+<text x="954.6" y="130.3" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">— (external/on-prem)</text>
+<text x="1415.0" y="129.5" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">Federated into Keycloak via LDAPS</text>
+<line x1="210.0" y1="147.4" x2="2512.0" y2="147.4" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="169.8" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">OpenShift Service Mesh</text>
+<text x="954.6" y="168.1" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">— (cluster-level operator)</text>
+<text x="1415.0" y="167.3" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">Istio data plane for Gateway + Kuadrant</text>
+<line x1="210.0" y1="185.1" x2="2512.0" y2="185.1" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="207.6" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">NFD + NVIDIA GPU Operator</text>
+<text x="954.6" y="205.9" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">— (cluster-level operator)</text>
+<text x="1415.0" y="205.0" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">Hardware profiling + driver enablement</text>
+<line x1="210.0" y1="222.9" x2="2512.0" y2="222.9" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="291.5" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">Red Hat Build of Keycloak (RHBK)</text>
+<text x="954.6" y="289.8" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">keycloak</text>
+<text x="1415.0" y="288.9" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">Identity provider — dashboard/admin auth backend</text>
+<line x1="210.0" y1="306.8" x2="2512.0" y2="306.8" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="329.2" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">Gateway API + MetalLB LB + cert-manager TLS</text>
+<text x="954.6" y="327.5" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">openshift-ingress</text>
+<text x="1415.0" y="326.7" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">Ingress edge: load balancing + TLS termination</text>
+<line x1="210.0" y1="344.6" x2="2512.0" y2="344.6" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="367.0" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">Kuadrant control plane + Authorino</text>
+<text x="954.6" y="365.3" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">kuadrant-system</text>
+<text x="1415.0" y="364.5" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">AuthPolicy/RateLimitPolicy control plane</text>
+<line x1="210.0" y1="382.3" x2="2512.0" y2="382.3" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="404.8" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">RHOAI DataScienceCluster (v3.4) + maas-api</text>
+<text x="954.6" y="403.1" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">redhat-ods-applications</text>
+<text x="1415.0" y="402.2" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">RHOAI Operator v3.4 + maas-api service</text>
+<line x1="210.0" y1="420.1" x2="2512.0" y2="420.1" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="465.6" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">PostgreSQL DB</text>
+<text x="954.6" y="463.9" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">postgresql</text>
+<text x="1415.0" y="463.0" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">ODF-backed PVC — 3 consumers: Keycloak, Model Registry, maas-api</text>
+<line x1="210.0" y1="480.9" x2="2512.0" y2="480.9" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="503.3" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">IBM Storage Fusion (ODF)</text>
+<text x="954.6" y="501.6" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">— (cluster-level operator)</text>
+<text x="1415.0" y="500.8" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">S3 object storage + block storage (PVCs)</text>
+<line x1="210.0" y1="518.7" x2="2512.0" y2="518.7" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="541.1" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">MaaSSubscription + MaaSAuthPolicy</text>
+<text x="954.6" y="539.4" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">models-as-a-service</text>
+<text x="1415.0" y="538.6" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">Tenant governance CRs</text>
+<line x1="210.0" y1="556.4" x2="2512.0" y2="556.4" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="578.9" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">LLMInferenceServices</text>
+<text x="954.6" y="577.2" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">llm</text>
+<text x="1415.0" y="576.3" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">Qwen2.5-7B-AWQ, GPT-OSS-20B</text>
+<line x1="210.0" y1="594.2" x2="2512.0" y2="594.2" stroke="#D0D0D0" stroke-width="1"/>
+<text x="218.0" y="616.6" font-family="Red Hat Display" font-weight="700" font-size="17" fill="#1F1F1F" text-anchor="start">Grafana + Grafana Operator</text>
+<text x="954.6" y="614.9" font-family="Red Hat Text" font-weight="500" font-size="15" fill="#5A5A5A" text-anchor="start">grafana</text>
+<text x="1415.0" y="614.1" font-family="Red Hat Text" font-weight="400" font-size="14" fill="#5A5A5A" text-anchor="start">GrafanaDatasource/Dashboard CRs</text>
+<line x1="210.0" y1="631.9" x2="2512.0" y2="631.9" stroke="#D0D0D0" stroke-width="1"/>
+<line x1="946.6" y1="56.0" x2="946.6" y2="631.9" stroke="#D0D0D0" stroke-width="1"/>
+<line x1="1407.0" y1="56.0" x2="1407.0" y2="631.9" stroke="#D0D0D0" stroke-width="1"/>
+<line x1="210.0" y1="56.0" x2="210.0" y2="631.9" stroke="#8A8A8A" stroke-width="1.5"/>
+<line x1="2512.0" y1="56.0" x2="2512.0" y2="631.9" stroke="#8A8A8A" stroke-width="1.5"/>
+<rect x="48.0" y="109.6" width="4.0" height="113.3" fill="#B36B00"/>
+<text x="85.2" y="166.2" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#B36B00" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 85.2 166.2)">IDENTITY</text>
+<text x="110.8" y="166.2" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#B36B00" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 110.8 166.2)">PLATFORM</text>
+<text x="136.4" y="166.2" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#B36B00" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 136.4 166.2)">OPERATORS</text>
+<rect x="48.0" y="269.0" width="4.0" height="151.0" fill="#1F5FA8"/>
+<text x="85.2" y="344.6" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#1F5FA8" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 85.2 344.6)">CORE</text>
+<text x="110.8" y="344.6" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#1F5FA8" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 110.8 344.6)">NAMESPACES</text>
+<rect x="48.0" y="443.1" width="4.0" height="188.8" fill="#6B4FA0"/>
+<text x="85.2" y="537.5" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#6B4FA0" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 85.2 537.5)">DATA /</text>
+<text x="110.8" y="537.5" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#6B4FA0" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 110.8 537.5)">STORAGE +</text>
+<text x="136.4" y="537.5" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#6B4FA0" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 136.4 537.5)">WORKLOAD /</text>
+<text x="162.0" y="537.5" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#6B4FA0" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 162.0 537.5)">OBSERV.</text>
+<text x="210.0" y="688.9" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#1F1F1F" text-anchor="start">Legend — zone / layer color key</text>
+<rect x="210.0" y="710.5" width="18.0" height="18.0" fill="#B36B00"/>
+<text x="238.0" y="727.7" font-family="Red Hat Text" font-weight="500" font-size="14" fill="#1F1F1F" text-anchor="start">IDENTITY · PLATFORM OPERATORS</text>
+<rect x="513.2" y="710.5" width="18.0" height="18.0" fill="#1F5FA8"/>
+<text x="541.2" y="727.7" font-family="Red Hat Text" font-weight="500" font-size="14" fill="#1F1F1F" text-anchor="start">CORE NAMESPACES</text>
+<rect x="714.4" y="710.5" width="18.0" height="18.0" fill="#6B4FA0"/>
+<text x="742.4" y="727.7" font-family="Red Hat Text" font-weight="500" font-size="14" fill="#1F1F1F" text-anchor="start">DATA / STORAGE + WORKLOAD / OBSERVABILITY NAMESPACES</text>
+<text x="210.0" y="794.5" font-family="Red Hat Display" font-weight="700" font-size="20" fill="#1F1F1F" text-anchor="start">Namespace &amp; operator relationships</text>
+<line x1="210.0" y1="807.1" x2="2512.0" y2="807.1" stroke="#8A8A8A" stroke-width="1.5"/>
+<text x="210.0" y="834.7" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">1. Active Directory → ns: keycloak</text>
+<text x="223.1" y="855.2" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— LDAPS federation</text>
+<text x="210.0" y="884.4" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">2. ns: keycloak → ns: postgresql</text>
+<text x="226.7" y="904.9" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— auth/session backend</text>
+<text x="210.0" y="934.1" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">3. ns: redhat-ods-applications → ns: postgresql</text>
+<text x="227.1" y="954.6" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— Model Registry backend</text>
+<text x="210.0" y="983.8" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">4. ns: models-as-a-service → ns: postgresql</text>
+<text x="228.0" y="1004.3" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— maas-api backend</text>
+<text x="210.0" y="1033.5" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">5. ns: postgresql → IBM Storage Fusion (ODF)</text>
+<text x="226.9" y="1053.9" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— block storage (PVC)</text>
+<text x="210.0" y="1083.1" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">6. IBM Storage Fusion (ODF) → ns: llm</text>
+<text x="227.5" y="1103.6" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— S3 model weights</text>
+<text x="210.0" y="1132.8" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">7. NFD + NVIDIA GPU Operator → ns: llm</text>
+<text x="225.2" y="1153.3" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— hardware profiles</text>
+<text x="1385.0" y="834.7" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">8. OpenShift Service Mesh → ns: openshift-ingress</text>
+<text x="1402.4" y="855.2" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— Istio data plane</text>
+<text x="1385.0" y="884.4" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">9. OpenShift Service Mesh → ns: kuadrant-system</text>
+<text x="1402.4" y="904.9" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— Istio data plane</text>
+<text x="1385.0" y="934.1" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">10. ns: openshift-ingress → ns: kuadrant-system</text>
+<text x="1408.5" y="954.6" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— Gateway routes</text>
+<text x="1385.0" y="983.8" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">11. ns: kuadrant-system → ns: redhat-ods-applications</text>
+<text x="1403.5" y="1004.3" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— AuthPolicy → maas-api</text>
+<text x="1385.0" y="1033.5" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">12. ns: redhat-ods-applications → ns: models-as-a-service</text>
+<text x="1407.2" y="1053.9" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— maas-api CRs</text>
+<text x="1385.0" y="1083.1" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">13. ns: models-as-a-service → ns: llm</text>
+<text x="1407.5" y="1103.6" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— authorize model access</text>
+<text x="1385.0" y="1132.8" font-family="Red Hat Text" font-weight="500" font-size="16" fill="#1F1F1F" text-anchor="start">14. ns: llm → ns: grafana</text>
+<text x="1408.4" y="1153.3" font-family="Red Hat Text" font-weight="400" font-size="15" fill="#5A5A5A" text-anchor="start">— metrics via Prometheus/Thanos</text>
+</svg>
