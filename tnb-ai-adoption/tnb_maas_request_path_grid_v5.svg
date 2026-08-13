@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2985 1336" width="2985" height="1336">
+<rect x="0" y="0" width="2985" height="1336" fill="#FFFFFF"/>
+<text x="354.1" y="110.8" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F1F1F" text-anchor="start">Component</text>
+<text x="826.7" y="110.8" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F1F1F" text-anchor="start">Namespace</text>
+<text x="1181.2" y="110.8" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F1F1F" text-anchor="start">Purpose</text>
+<rect x="333.1" y="504.5" width="1476.9" height="95.6" fill="#FBE9C4" data-kind="ai_highlight"/>
+<rect x="333.1" y="600.1" width="1476.9" height="79.3" fill="#FBE9C4" data-kind="ai_highlight"/>
+<rect x="333.1" y="679.4" width="1476.9" height="95.6" fill="#FBE9C4" data-kind="ai_highlight"/>
+<rect x="333.1" y="884.4" width="1476.9" height="95.6" fill="#FBE9C4" data-kind="ai_highlight"/>
+<rect x="333.1" y="980.0" width="1476.9" height="79.3" fill="#FBE9C4" data-kind="ai_highlight"/>
+<rect x="333.1" y="1059.3" width="1476.9" height="54.8" fill="#FBE9C4" data-kind="ai_highlight"/>
+<rect x="333.1" y="1114.1" width="1476.9" height="111.9" fill="#FBE9C4" data-kind="ai_highlight"/>
+<line x1="333.1" y1="136.0" x2="1810.0" y2="136.0" stroke="#8A8A8A" stroke-width="2"/>
+<text x="354.1" y="177.0" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Builder Apps /</text>
+<text x="354.1" y="217.8" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Chatbots</text>
+<text x="826.7" y="170.2" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">— (external)</text>
+<text x="1181.2" y="170.2" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">OpenAI-compatible REST calls</text>
+<line x1="333.1" y1="231.6" x2="1810.0" y2="231.6" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="272.6" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Keycloak (RHBK)</text>
+<text x="826.7" y="265.8" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">keycloak</text>
+<text x="1181.2" y="265.8" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">Secures dashboard/admin access only —</text>
+<text x="1181.2" y="298.5" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">NOT on the inference hot path (Kuadrant</text>
+<text x="1181.2" y="331.1" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">“Gateway Independence”)</text>
+<line x1="333.1" y1="343.5" x2="1810.0" y2="343.5" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="435.9" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">MetalLB LoadBalancer</text>
+<text x="826.7" y="429.1" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">— (cluster-level)</text>
+<text x="1181.2" y="429.1" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">On-prem external IP pool</text>
+<line x1="333.1" y1="449.7" x2="1810.0" y2="449.7" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="490.7" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Gateway API</text>
+<text x="826.7" y="483.9" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">openshift-ingress</text>
+<text x="1181.2" y="483.9" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">TLS via cert-manager</text>
+<line x1="333.1" y1="504.5" x2="1810.0" y2="504.5" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="545.5" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Kuadrant: Authorino +</text>
+<text x="354.1" y="586.3" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Limitador</text>
+<text x="826.7" y="538.7" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">kuadrant-system</text>
+<text x="1181.2" y="538.7" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">AuthPolicy + RateLimitPolicy (RPM/TPM)</text>
+<line x1="333.1" y1="600.1" x2="1810.0" y2="600.1" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="641.1" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">maas-api</text>
+<text x="826.7" y="634.3" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">redhat-ods-</text>
+<text x="826.7" y="666.9" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">applications</text>
+<text x="1181.2" y="634.3" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">Key validation · tier check</text>
+<line x1="333.1" y1="679.4" x2="1810.0" y2="679.4" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="720.4" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">MaaSSubscription +</text>
+<text x="354.1" y="761.2" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">MaaSAuthPolicy</text>
+<text x="826.7" y="713.6" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">models-as-a-service</text>
+<text x="1181.2" y="713.6" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">Bind Keycloak group to model + rate limit</text>
+<line x1="333.1" y1="775.0" x2="1810.0" y2="775.0" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="925.4" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">ODF S3 (IBM Storage</text>
+<text x="354.1" y="966.2" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Fusion)</text>
+<text x="826.7" y="918.6" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">— (cluster-level</text>
+<text x="826.7" y="951.2" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">storage)</text>
+<text x="1181.2" y="918.6" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">Model weights object storage</text>
+<line x1="333.1" y1="980.0" x2="1810.0" y2="980.0" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="1021.0" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">LLMInferenceService</text>
+<text x="826.7" y="1014.2" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">llm</text>
+<text x="1181.2" y="1014.2" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">Qwen2.5-7B-Instruct-AWQ · RTX 6000</text>
+<text x="1181.2" y="1046.8" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">Pro</text>
+<line x1="333.1" y1="1059.3" x2="1810.0" y2="1059.3" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="1100.3" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">LLMInferenceService</text>
+<text x="826.7" y="1093.5" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">llm</text>
+<text x="1181.2" y="1093.5" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">GPT-OSS-20B · 2x H200 (tensor parallel)</text>
+<line x1="333.1" y1="1114.1" x2="1810.0" y2="1114.1" stroke="#D0D0D0" stroke-width="1"/>
+<text x="354.1" y="1155.1" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">Prometheus + Thanos</text>
+<text x="354.1" y="1195.9" font-family="Red Hat Display" font-weight="700" font-size="40" fill="#1F1F1F" text-anchor="start">+ Grafana</text>
+<text x="826.7" y="1148.3" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">openshift-user-</text>
+<text x="826.7" y="1180.9" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">workload-</text>
+<text x="826.7" y="1213.5" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#5A5A5A" text-anchor="start">monitoring / grafana</text>
+<text x="1181.2" y="1148.3" font-family="Red Hat Text" font-weight="400" font-size="32" fill="#5A5A5A" text-anchor="start">vllm-inference-dashboard</text>
+<line x1="333.1" y1="1226.0" x2="1810.0" y2="1226.0" stroke="#D0D0D0" stroke-width="1"/>
+<line x1="805.7" y1="54.0" x2="805.7" y2="1226.0" stroke="#D0D0D0" stroke-width="1"/>
+<line x1="1160.2" y1="54.0" x2="1160.2" y2="1226.0" stroke="#D0D0D0" stroke-width="1"/>
+<line x1="333.1" y1="54.0" x2="333.1" y2="1226.0" stroke="#8A8A8A" stroke-width="1.5"/>
+<line x1="1810.0" y1="54.0" x2="1810.0" y2="1226.0" stroke="#8A8A8A" stroke-width="1.5"/>
+<rect x="227.1" y="136.0" width="12.0" height="207.5" fill="#1C7A5E" data-kind="rail"/>
+<text x="303.1" y="239.8" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1C7A5E" text-anchor="middle" letter-spacing="0.5" transform="rotate(-90 303.1 239.8)">CLIENT</text>
+<rect x="71.0" y="394.9" width="12.0" height="380.1" fill="#1F5FA8" data-kind="rail"/>
+<text x="147.0" y="754.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F5FA8" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 147.0 754.0)">EDGE / API</text>
+<text x="199.0" y="754.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F5FA8" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 199.0 754.0)">GOVERNANCE</text>
+<text x="251.1" y="754.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F5FA8" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 251.1 754.0)">+ TENANT</text>
+<text x="303.1" y="754.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F5FA8" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 303.1 754.0)">GOVERNANCE</text>
+<rect x="71.0" y="884.4" width="12.0" height="341.6" fill="#C9190B" data-kind="rail"/>
+<text x="147.0" y="1205.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#C9190B" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 147.0 1205.0)">MODEL</text>
+<text x="199.0" y="1205.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#C9190B" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 199.0 1205.0)">SERVING ·</text>
+<text x="251.1" y="1205.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#C9190B" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 251.1 1205.0)">STORAGE ·</text>
+<text x="303.1" y="1205.0" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#C9190B" text-anchor="start" letter-spacing="0.5" transform="rotate(-90 303.1 1205.0)">OBSERVABILITY</text>
+<text x="1902.0" y="97.3" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F1F1F" text-anchor="start">Legend — zone / layer color key</text>
+<rect x="1902.0" y="131.0" width="54.0" height="54.0" fill="#1C7A5E" data-kind="legend_swatch"/>
+<text x="1977.0" y="175.3" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#1F1F1F" text-anchor="start">CLIENT</text>
+<rect x="1902.0" y="201.0" width="54.0" height="54.0" fill="#1F5FA8" data-kind="legend_swatch"/>
+<text x="1977.0" y="245.3" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#1F1F1F" text-anchor="start">EDGE / API GOVERNANCE + TENANT GOVERNANCE</text>
+<rect x="1902.0" y="271.0" width="54.0" height="54.0" fill="#C9190B" data-kind="legend_swatch"/>
+<text x="1977.0" y="315.3" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#1F1F1F" text-anchor="start">MODEL SERVING · STORAGE · OBSERVABILITY</text>
+<rect x="1902.0" y="341.0" width="54.0" height="54.0" fill="#FBE9C4" stroke="#C08A2E" stroke-width="1.5" data-kind="legend_swatch"/>
+<text x="1977.0" y="385.3" font-family="Red Hat Text" font-weight="500" font-size="32" fill="#1F1F1F" text-anchor="start">AI/ML component (serving, GPU, or MaaS governance)</text>
+<text x="1902.0" y="504.4" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F1F1F" text-anchor="start">Request flow — client to model, plus</text>
+<text x="1902.0" y="556.4" font-family="Red Hat Display" font-weight="700" font-size="51" fill="#1F1F1F" text-anchor="start">governance path</text>
+<line x1="1902.0" y1="586.1" x2="2956.0" y2="586.1" stroke="#8A8A8A" stroke-width="1.5"/>
+<text x="1902.0" y="644.0" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">1. Builder Apps / Chatbots → MetalLB LoadBalancer — sends</text>
+<text x="1902.0" y="678.6" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">request</text>
+<text x="1902.0" y="725.3" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">2. MetalLB LoadBalancer → Gateway API — TLS terminate (cert-</text>
+<text x="1902.0" y="760.0" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">manager cert)</text>
+<text x="1902.0" y="806.7" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">3. Gateway API → Kuadrant (Authorino + Limitador) — AuthPolicy +</text>
+<text x="1902.0" y="841.4" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">RateLimitPolicy</text>
+<text x="1902.0" y="888.0" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">4. Kuadrant → maas-api — validate API key</text>
+<text x="1902.0" y="934.7" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">5. maas-api → MaaSSubscription + MaaSAuthPolicy — check</text>
+<text x="1902.0" y="969.4" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">subscription/tier</text>
+<text x="1902.0" y="1016.1" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">6. MaaSSubscription + MaaSAuthPolicy → LLMInferenceService</text>
+<text x="1902.0" y="1050.8" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">(RTX 6000 Pro) — authorize (free-tier-maas group) + route</text>
+<text x="1902.0" y="1097.4" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">7. MaaSSubscription + MaaSAuthPolicy → LLMInferenceService (2x</text>
+<text x="1902.0" y="1132.1" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">H200) — authorize + route</text>
+<text x="1902.0" y="1178.8" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">8. ODF S3 → LLMInferenceService (RTX 6000 Pro) — pull weights</text>
+<text x="1902.0" y="1225.5" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">9. ODF S3 → LLMInferenceService (2x H200) — pull weights</text>
+<text x="1902.0" y="1272.2" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">10. LLMInferenceService (2x H200) → Prometheus + Thanos +</text>
+<text x="1902.0" y="1306.8" font-family="Red Hat Text" font-weight="500" font-size="34" fill="#1F1F1F" text-anchor="start">Grafana — vLLM /metrics → Prometheus → Thanos → Grafana</text>
+</svg>
