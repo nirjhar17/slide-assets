@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TNB AI/MaaS Engagement — Cheat Sheet</title>
+<style>
+  :root {
+    --rh-red: #ee0000;
+    --rh-dark-red: #a30000;
+    --ink: #1a1a1a;
+    --muted: #5a6169;
+    --bg: #f5f6f8;
+    --card-bg: #ffffff;
+    --border: #e2e4e8;
+    --code-bg: #1e1e2e;
+    --code-fg: #e6e6e6;
+    --accent-soft: #fdeaea;
+    --sid-accent: #0f6fb0;
+    --sid-soft: #e8f2fb;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  a { color: var(--rh-dark-red); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header.top {
+    background: linear-gradient(135deg, var(--rh-dark-red), var(--rh-red));
+    color: #fff;
+    padding: 28px 32px 20px;
+    position: relative;
+  }
+  header.top h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.02em; }
+  header.top p.sub { margin: 0; opacity: 0.92; font-size: 14px; }
+  header.top .badges { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+  header.top .badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  nav.toc {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  nav.toc a {
+    display: inline-block;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 10px;
+    margin-right: 4px;
+    border-radius: 6px;
+  }
+  nav.toc a:hover { background: var(--accent-soft); color: var(--rh-dark-red); text-decoration: none; }
+
+  main { max-width: 1180px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  section { margin-bottom: 40px; scroll-margin-top: 56px; }
+
+  h2.section-title {
+    font-size: 21px;
+    margin: 0 0 4px;
+    padding-bottom: 8px;
+    border-bottom: 3px solid var(--rh-red);
+    color: var(--rh-dark-red);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  h2.section-title .tag {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--accent-soft);
+    color: var(--rh-dark-red);
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+  h2.section-title .tag.sid { background: var(--sid-soft); color: var(--sid-accent); }
+  h2.section-title .tag.both { background: #eef4e6; color: #3a7a1f; }
+  p.section-desc { color: var(--muted); font-size: 14px; margin: 8px 0 18px; }
+
+  h3.sub { font-size: 16px; margin: 22px 0 8px; color: var(--ink); }
+  h4.subsub { font-size: 14px; margin: 16px 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+
+  .grid { display: grid; gap: 16px; }
+  .grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 800px) { .grid.cols-2, .grid.cols-3 { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .card h4 { margin: 0 0 8px; font-size: 14px; color: var(--rh-dark-red); }
+  .card.person { display: flex; gap: 12px; align-items: flex-start; }
+  .avatar {
+    flex-shrink: 0;
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: #fff; font-size: 15px;
+  }
+  .avatar.munshi { background: var(--rh-red); }
+  .avatar.sid { background: var(--sid-accent); }
+  .avatar.tnb { background: #444; }
+
+  ul.tight { margin: 6px 0; padding-left: 20px; }
+  ul.tight li { margin-bottom: 4px; font-size: 14px; }
+  ul.nodash { list-style: none; padding-left: 0; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 10px 0 6px;
+    background: #fff;
+  }
+  table caption { text-align: left; font-size: 14px; color: var(--muted); margin-bottom: 4px; }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #fafafa; font-weight: 700; color: var(--ink); }
+  tr:nth-child(even) td { background: #fbfbfc; }
+  td code, th code { font-size: 14px; }
+
+  code {
+    background: #f0f1f3;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 14px;
+    color: #a30000;
+  }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 12px 14px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 8px 0 14px;
+  }
+  pre code { background: none; color: inherit; padding: 0; }
+
+  .pill-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+  .pill {
+    font-size: 14px; font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 12px;
+    background: #eef1f4;
+    color: #444;
+  }
+  .pill.red { background: var(--accent-soft); color: var(--rh-dark-red); }
+  .pill.blue { background: var(--sid-soft); color: var(--sid-accent); }
+  .pill.green { background: #eef4e6; color: #3a7a1f; }
+
+  .callout {
+    border-left: 4px solid var(--rh-red);
+    background: var(--accent-soft);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+  .callout.blue { border-left-color: var(--sid-accent); background: var(--sid-soft); }
+  .callout.gold { border-left-color: #c99000; background: #fdf5e2; }
+
+  .status-pass { color: #1e7d34; font-weight: 700; }
+
+  .two-col-note { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 800px) { .two-col-note { grid-template-columns: 1fr; } }
+
+  footer.page-footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    padding: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .hostname-list { columns: 2; column-gap: 24px; font-size: 14px; }
+  @media (max-width: 700px) { .hostname-list { columns: 1; } }
+  .hostname-list li { margin-bottom: 4px; break-inside: avoid; }
+
+  .kicker { font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>TNB AI Adoption &amp; MaaS Engagement — Cheat Sheet</h1>
+  <p class="sub">A single-page personal recall reference combining both Red Hat Consulting Engagement Reports (CERs) for Tenaga Nasional Berhad (TNB), Malaysia.</p>
+  <div class="badges">
+    <span class="badge">🧱 Platform Layer — Munshi Hafizul Haque</span>
+    <span class="badge">🤖 MaaS/RHOAI Layer — Siddhartha "Sid" De</span>
+    <span class="badge">OCP 4.20.18 · RHOAI 3.4</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#whoswho">Who's Who</a>
+  <a href="#business">Business Context</a>
+  <a href="#infra">Infra &amp; Hardware</a>
+  <a href="#network">Network &amp; Install</a>
+  <a href="#storage">Storage</a>
+  <a href="#opsposture">Monitoring/Logging/Compliance</a>
+  <a href="#auth-infra">Infra Auth</a>
+  <a href="#backup-console">Backup &amp; Console</a>
+  <a href="#maas-arch">MaaS Architecture</a>
+  <a href="#namespaces">Namespaces &amp; Traffic</a>
+  <a href="#maas-identity">MaaS Identity (Keycloak)</a>
+  <a href="#models">Models &amp; Governance</a>
+  <a href="#observability">Observability</a>
+  <a href="#records">Policies/ADRs</a>
+  <a href="#uat">UAT / Validation</a>
+  <a href="#nextsteps">Next Steps</a>
+  <a href="#dontmiss">Don't Miss</a>
+</nav>
+
+<main>
+
+<!-- WHO'S WHO -->
+<section id="whoswho">
+  <h2 class="section-title">Who's Who <span class="tag both">Both docs</span></h2>
+  <div class="grid cols-3">
+    <div class="card person">
+      <div class="avatar munshi">MH</div>
+      <div>
+        <h4>Munshi Hafizul Haque</h4>
+        <div class="kicker">Platform / Infra Layer</div>
+        <p style="margin:4px 0 0;font-size:14px;">Consultant. Authored the <strong>OCP 4.20 &amp; IBM Storage FDF CER</strong> — base cluster build, storage, GPU operator, compliance, monitoring, logging, backup, web console. Bastion SSH key: <code>rhmunshi@aidcbastion1</code>.</p>
+      </div>
+    </div>
+    <div class="card person">
+      <div class="avatar sid">SD</div>
+      <div>
+        <h4>Siddhartha "Sid" De</h4>
+        <div class="kicker">MaaS / RHOAI Layer</div>
+        <p style="margin:4px 0 0;font-size:14px;">Senior Consultant (<code>sidd@redhat.com</code>). Authored the <strong>OCP AI Model-as-a-Service CER</strong> — RHOAI, Kuadrant, Keycloak, vLLM, governance, observability, UAT.</p>
+      </div>
+    </div>
+    <div class="card person">
+      <div class="avatar tnb">AB</div>
+      <div>
+        <h4>Adam Bin Abu Bakar</h4>
+        <div class="kicker">TNB — Project Manager</div>
+        <p style="margin:4px 0 0;font-size:14px;">TNB-side Project Manager listed as team member contact in Sid's report (<code>adam.abubakar@tnb.com.my</code>).</p>
+      </div>
+    </div>
+  </div>
+  <table style="margin-top:16px;">
+    <caption>Red Hat team contacts (from Sid's CER, Participants section)</caption>
+    <tr><th>Name</th><th>Title</th><th>Contact</th></tr>
+    <tr><td>Siddhartha De</td><td>AI Consultant</td><td><code>sidd@redhat.com</code></td></tr>
+    <tr><td>Munshi Hafizul Haque</td><td>Platform Consultant</td><td><code>munshi@redhat.com</code></td></tr>
+    <tr><td>(P. Loke)</td><td>Project Manager</td><td><code>ploke@redhat.com</code></td></tr>
+  </table>
+  <div class="callout">
+    Design document referenced by both reports: <strong>"RHOCP-RHOAI Design Document-TNB-v1.2-20260505"</strong>. Munshi's CER is v1.0, dated <strong>30-May-2026</strong>. Sid's CER review history lists <strong>v1.0, Siddhartha De, Initial Draft</strong> (no date recorded in the version table itself, but Journal entries run 10–17 May 2026).
+  </div>
+</section>
+
+<!-- BUSINESS CONTEXT -->
+<section id="business">
+  <h2 class="section-title">Business &amp; Customer Context <span class="tag red">Munshi's CER</span></h2>
+  <p class="section-desc">TNB's profile as described in the Executive Summary / Overview sections of both reports (Munshi's version is the more detailed "About TNB"; Sid's has a shorter, engagement-focused version).</p>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>From Munshi's CER</h4>
+      <ul class="tight">
+        <li>Malaysia's <strong>largest publicly listed electric utility</strong>; primary electricity provider in <strong>Peninsular Malaysia</strong>.</li>
+        <li>HQ in <strong>Kuala Lumpur</strong>; handles generation, transmission &amp; distribution.</li>
+        <li>Serves <strong>11+ million</strong> commercial, industrial &amp; residential customers.</li>
+        <li>Driving national energy transition toward <strong>Net Zero 2050</strong>.</li>
+        <li>Heavy investment in Renewable Energy: large hydro, solar, and <strong>Battery Energy Storage Systems (BESS)</strong>; smart-grid infrastructure.</li>
+        <li>International expansion via <strong>New Energy Division</strong> and <strong>TNB Genco</strong>: renewable assets + facility/maintenance services in the <strong>UK, Australia, Turkiye, and the Middle East</strong>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>From Sid's CER</h4>
+      <ul class="tight">
+        <li>Largest electricity utility in Malaysia, serving <strong>10+ million</strong> customers.</li>
+        <li>Vertically integrated across <strong>Peninsular Malaysia, Sabah, and Labuan</strong>.</li>
+        <li>Operating under the <strong>"Reimagining TNB"</strong> strategic blueprint.</li>
+        <li>Modernizing national grid + accelerating digital transformation toward <strong>Net Zero by 2050</strong>.</li>
+        <li>Deploying <strong>Advanced Metering Infrastructure (AMI)</strong>; upgrading IT/OT layers to integrate renewables and distributed energy resources (DERs).</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    Overall project framing (Munshi's Executive Summary): TNB wants an enterprise-ready container platform for <strong>Model-as-a-Service (MaaS) in AI</strong>, using OpenShift to let Service Providers manage <strong>Sovereign Infrastructure, Platform and AI Services</strong>.
+  </div>
+</section>
+
+<!-- INFRA & HARDWARE -->
+<section id="infra">
+  <h2 class="section-title">Infrastructure &amp; Hardware <span class="tag red">Munshi's CER</span></h2>
+  <p class="section-desc">Base OpenShift Container Platform (OCP) build for the Production (Prod) site — bare-metal compact cluster.</p>
+
+  <h3 class="sub">Cluster shape</h3>
+  <ul class="tight">
+    <li>Install method: <strong>on-premise Agent-based Installer</strong> (bare metal), <strong>Compact cluster</strong> topology.</li>
+    <li>1× helper/bastion node (RHEL9, virtual) + 3× control-plane nodes acting as <strong>both master and worker</strong> (bare metal, RHCOS).</li>
+    <li>OCP version: <strong>4.20.18</strong> (installer/oc client started at 4.20.3, cluster ended up on 4.20.18).</li>
+    <li>Bootstrap completed: <strong>6 May 2026, 17:33:58 +08:00</strong>. Full cluster install complete: <strong>6 May 2026, 17:56:28 +08:00</strong>.</li>
+    <li>Cluster name: <code>aidc</code> · Base domain: <code>tnb.com.my</code> · Full domain: <code>aidc.tnb.com.my</code>.</li>
+    <li>SDN: <strong>OVNKubernetes</strong> (ovs-networkpolicy plugin, <code>routingViaHost: true</code> patched for host routes).</li>
+  </ul>
+
+  <h3 class="sub">GPU hardware inventory</h3>
+  <div class="grid cols-3">
+    <div class="card">
+      <h4>aidch200nvl01</h4>
+      <p style="font-size:14px;margin:0 0 6px;">Dell PowerEdge R770 · <strong>NVIDIA H200 GPUs</strong></p>
+      <span class="pill red">Production</span> <span class="pill">Master + Worker</span>
+      <p style="font-size:14px;margin:8px 0 0;">IP: <code>10.249.80.100</code> · Label: <code>node-role.kubernetes.io/gpu="H200NVL"</code></p>
+    </div>
+    <div class="card">
+      <h4>aidch200nvl02</h4>
+      <p style="font-size:14px;margin:0 0 6px;">Dell PowerEdge R770 · <strong>NVIDIA H200 GPUs</strong></p>
+      <span class="pill red">Production</span> <span class="pill">Master + Worker</span>
+      <p style="font-size:14px;margin:8px 0 0;">IP: <code>10.249.80.101</code> · Label: <code>node-role.kubernetes.io/gpu="H200NVL"</code></p>
+    </div>
+    <div class="card">
+      <h4>aidc6k03</h4>
+      <p style="font-size:14px;margin:0 0 6px;">Dell PowerEdge R770 · <strong>NVIDIA RTX PRO 6000</strong></p>
+      <span class="pill">Non-Prod / Validation</span> <span class="pill">Master + Worker</span>
+      <p style="font-size:14px;margin:8px 0 0;">IP: <code>10.249.80.102</code> · Label: <code>node-role.kubernetes.io/gpu="RTXPRO6000BW"</code></p>
+    </div>
+  </div>
+  <div class="callout">
+    2× GPUs per H200 node according to Sid's CER (2 nodes × 2 GPUs = the "H200 tier"); RTX 6000 Pro node also carries 2 GPUs. Total: <strong>3 GPU-enabled nodes</strong> across Prod + validation. Hardware detection validated via <code>nvidia-smi -L</code>.
+  </div>
+
+  <h3 class="sub">Full hostname / IP reference (DNS A/PTR records)</h3>
+  <table>
+    <tr><th>Hostname</th><th>Type</th><th>IP</th><th>PTR</th><th>Role</th></tr>
+    <tr><td><code>aidcbastion1.aidc.tnb.com.my</code></td><td>A</td><td><code>10.249.85.100</code></td><td>Yes</td><td>Bastion (Virtual / RHEL9)</td></tr>
+    <tr><td><code>aidcbootstrap1.aidc.tnb.com.my</code></td><td>A</td><td><code>10.249.85.101</code></td><td>Yes</td><td>Bootstrap (Virtual / RHCOS)</td></tr>
+    <tr><td><code>aidcmirrorregistry1.aidc.tnb.com.my</code></td><td>A</td><td><code>10.249.85.102</code></td><td>Yes</td><td>Mirror Registry (Virtual / RHCOS)</td></tr>
+    <tr><td><code>*.apps.aidc.tnb.com.my</code></td><td>A (wildcard)</td><td><code>10.216.14.35</code></td><td>No</td><td>Ingress / Apps wildcard</td></tr>
+    <tr><td><code>api.aidc.tnb.com.my</code></td><td>A</td><td><code>10.216.14.34</code></td><td>Yes</td><td>Kubernetes API</td></tr>
+    <tr><td><code>api-int.aidc.tnb.com.my</code></td><td>A</td><td><code>10.216.14.36</code></td><td>Yes</td><td>Kubernetes API (internal)</td></tr>
+    <tr><td><code>aidch200nvl01.aidc.tnb.com.my</code></td><td>A</td><td><code>10.249.80.100</code></td><td>Yes</td><td>Master + Worker (H200 #1)</td></tr>
+    <tr><td><code>aidch200nvl02.aidc.tnb.com.my</code></td><td>A</td><td><code>10.249.80.101</code></td><td>Yes</td><td>Master + Worker (H200 #2)</td></tr>
+    <tr><td><code>aidc6k03.aidc.tnb.com.my</code></td><td>A</td><td><code>10.249.80.102</code></td><td>Yes</td><td>Master + Worker (RTX 6000 Pro)</td></tr>
+    <tr><td><code>maas.apps.aidc.tnb.com.my</code></td><td>A</td><td><code>10.249.80.201</code></td><td>Yes</td><td><strong>Model-as-a-Service (MaaS) URL</strong> — matches MetalLB pool start</td></tr>
+  </table>
+
+  <h3 class="sub">NIC / bonding layout per node</h3>
+  <table>
+    <tr><th>Hostname</th><th>Bond</th><th>Slave interfaces</th><th>Purpose</th><th>Subnet</th></tr>
+    <tr><td rowspan="2"><code>aidch200nvl01</code></td><td><code>bond0</code></td><td><code>eno17295np0</code> (MAC <code>6c:83:75:ce:20:b0</code>), <code>eno17395np0</code> (MAC <code>34:d8:68:21:3e:28</code>)</td><td>Primary / rendezvous</td><td><code>10.249.80.100/24</code></td></tr>
+    <tr><td><code>bond1</code></td><td><code>eno17305np1</code>, <code>eno17405np1</code></td><td>Backup network (VLAN 3501, <code>bond1.3501</code>)</td><td><code>10.249.81.100/24</code></td></tr>
+    <tr><td rowspan="2"><code>aidch200nvl02</code></td><td><code>bond0</code></td><td><code>eno17395np0</code> (MAC <code>34:d8:68:21:d3:92</code>), <code>eno17295np0</code> (MAC <code>6c:83:75:cd:ff:40</code>)</td><td>Primary</td><td><code>10.249.80.101/24</code></td></tr>
+    <tr><td><code>bond1</code></td><td><code>eno17305np1</code>, <code>eno17405np1</code></td><td>Backup network</td><td><code>10.249.81.101/24</code></td></tr>
+    <tr><td rowspan="2"><code>aidc6k03</code></td><td><code>bond0</code></td><td><code>eno17295np0</code> (MAC <code>6c:83:75:ce:2e:40</code>), <code>eno17395np0</code> (MAC <code>34:d8:68:21:5a:d8</code>)</td><td>Primary</td><td><code>10.249.80.102/24</code></td></tr>
+    <tr><td><code>bond1</code></td><td><code>eno17305np1</code>, <code>eno17405np1</code></td><td>Backup network</td><td><code>10.249.81.102/24</code></td></tr>
+  </table>
+  <p class="section-desc">Bonding mode: <code>802.3ad</code> (LACP, mode 4), <code>miimon: 150ms</code>. Backup network VLAN 3501 routes to <code>10.249.81.0/24</code> via <code>bond1.3501</code>. Root device hints use disk <strong>WWN</strong> identifiers per host (retrievable via iLO / <code>lsblk -o NAME,SIZE,TYPE,WWN</code> in the RHCOS live ISO).</p>
+</section>
+
+<!-- NETWORK & INSTALL -->
+<section id="network">
+  <h2 class="section-title">Network, DNS &amp; Install Details <span class="tag red">Munshi's CER</span></h2>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>Cluster networking (install-config.yaml)</h4>
+      <ul class="tight">
+        <li>Cluster network: <code>10.242.0.0/16</code>, hostPrefix <code>23</code></li>
+        <li>Machine network: <code>10.249.80.0/24</code></li>
+        <li>Service network: <code>10.243.0.0/16</code></li>
+        <li>Network type: <code>OVNKubernetes</code></li>
+        <li>Rendezvous IP (node 0): <code>10.249.80.100</code> (aidch200nvl01)</li>
+        <li>FIPS: <code>false</code></li>
+        <li>Pull secret registries used: <code>cloud.openshift.com</code>, <code>quay.io</code>, <code>registry.connect.redhat.com</code>, <code>registry.redhat.io</code> — account email <code>yazid@tnb.com.my</code></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Ops / time / DNS servers</h4>
+      <ul class="tight">
+        <li>NTP: <code>tnbntp01.hq.tnb.com.my</code>, <code>tnbntp02.hq.tnb.com.my</code></li>
+        <li>Node DNS resolvers: <code>10.216.102.102</code>, <code>10.215.102.111</code></li>
+        <li>Default gateway/next-hop: <code>10.249.80.1</code> via <code>bond0</code></li>
+        <li>Timezone forced to <strong>Asia/Kuala_Lumpur</strong> via a custom MachineConfig (<code>99-master-chrony-tz</code>) and <code>chrony.conf</code></li>
+        <li>F5 load balancer configured by TNB's network team (external LB for API + apps)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub">Firewall port matrix (condensed)</h3>
+  <table>
+    <tr><th>Source</th><th>Port(s)</th><th>Destination</th><th>Purpose</th></tr>
+    <tr><td>All VMs</td><td>2379-2380</td><td>etcd nodes</td><td>etcd server/peer/metrics</td></tr>
+    <tr><td>All VMs</td><td>6443</td><td>All Masters</td><td>Kubernetes API</td></tr>
+    <tr><td>All VMs</td><td>22623</td><td>All Masters</td><td>Machine Config downloads</td></tr>
+    <tr><td>All VMs</td><td>9000-9999</td><td>All VMs</td><td>Node exporter (9100-9101), CVO (9099)</td></tr>
+    <tr><td>All VMs</td><td>10249-10259 / 10256</td><td>All VMs</td><td>Kubernetes reserved / openshift-sdn</td></tr>
+    <tr><td>All VMs</td><td>30000-32767</td><td>All VMs</td><td>Kubernetes NodePort</td></tr>
+    <tr><td>Load Balancer</td><td>80, 443</td><td>All Routers</td><td>Application traffic</td></tr>
+    <tr><td>Load Balancer</td><td>6443</td><td>All Masters</td><td>API traffic</td></tr>
+    <tr><td>All VMs → Helper Node</td><td>67, 69 (UDP)</td><td>Helper Node</td><td>DHCP / PXE</td></tr>
+    <tr><td>Helper Node → All VMs</td><td>22</td><td>All VMs</td><td>SSH access</td></tr>
+    <tr><td>UDP nodes</td><td>4789, 6081</td><td>All VMs</td><td>VXLAN / GENEVE</td></tr>
+  </table>
+
+  <h3 class="sub">Key install commands / artifacts</h3>
+  <pre><code># oc version → Client Version: 4.20.3
+# openshift-install version → openshift-install 4.20.18 (final cluster)
+# openshift-install agent create image
+# openshift-install agent wait-for bootstrap-complete --log-level=info
+# export KUBECONFIG=/home/rhmunshi/aidc-ocp420/openshift/auth/kubeconfig
+# oc whoami → system:admin</code></pre>
+  <p class="section-desc">Binaries used: <code>helm-v4.1.4-linux-amd64.tar.gz</code>, <code>openshift-client-linux.tar.gz</code>, <code>openshift-install-linux.tar.gz</code>. ISO mounted to each master via <strong>iDRAC Virtual Console</strong> (Dell Integrated Remote Access Controller). Console: <code>https://console-openshift-console.apps.aidc.tnb.com.my</code>, initial login <code>kubeadmin</code>.</p>
+</section>
+
+<!-- STORAGE -->
+<section id="storage">
+  <h2 class="section-title">Storage <span class="tag both">Both docs</span></h2>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>Base platform storage (Munshi)</h4>
+      <ul class="tight">
+        <li><strong>IBM Storage Fusion</strong> operator installed to namespace <code>ibm-spectrum-fusion-ns</code>, update channel <strong>v2.0</strong>, <strong>Manual</strong> approval (Automatic not supported by IBM Fusion).</li>
+        <li>IBM Operator Catalog added via <code>CatalogSource</code> <code>ibm-operator-catalog</code> in <code>openshift-marketplace</code>, image <code>icr.io/cpopen/ibm-operator-catalog:latest</code>, poll interval 45m.</li>
+        <li><strong>IBM Storage Fusion Data Foundation (FDF)</strong> installed on top, providing the Ceph-based OpenShift Data Foundation (ODF) layer — device type: <strong>Local</strong>.</li>
+        <li>Local Storage Operator (namespace <code>openshift-local-storage</code>) provisions two <code>LocalVolumeSet</code>s:
+          <ul class="tight">
+            <li><code>infra-mon-lvs</code> → storageClass <code>infra-mon-sc</code>, Filesystem/xfs, 50G–550G, max 6 devices (monitoring/logging)</li>
+            <li><code>infra-fdf-lvs</code> → storageClass <code>infra-fdf-sc</code>, Block, 7T–8T, max 3 devices (FDF/ODF)</li>
+          </ul>
+        </li>
+        <li>Registry storage: S3-compatible OBC (<code>registry-obc</code>) in <code>openshift-image-registry</code>, registry scaled to <strong>2 replicas</strong>.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>MaaS-layer storage usage (Sid)</h4>
+      <ul class="tight">
+        <li>IBM Storage Fusion integrated via <strong>ODF</strong> provides S3-equivalent object storage <em>and</em> block storage (PVC) to the MaaS layer.</li>
+        <li><strong>Object storage (S3)</strong>: hosts foundational LLM model weights; <code>LLMInferenceService</code> pulls weights from ODF-backed S3 endpoint at pod init.</li>
+        <li><strong>Block storage (PVC)</strong>: backs the single PostgreSQL instance (namespace <code>postgresql</code>), which is the shared relational backend for <strong>Keycloak</strong>, <strong>maas-api</strong>, and the <strong>Model Registry</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- OPS POSTURE: MONITORING, LOGGING, COMPLIANCE -->
+<section id="opsposture">
+  <h2 class="section-title">Monitoring, Logging &amp; Compliance <span class="tag red">Munshi's CER</span></h2>
+
+  <h3 class="sub">Monitoring</h3>
+  <ul class="tight">
+    <li>Default Prometheus/Grafana/AlertManager stack (Cluster Monitoring Operator).</li>
+    <li>Prometheus retention: <strong>30 days</strong>, <code>retentionSize: 450GB</code>, storage class <code>infra-mon-sc</code>, PVC <strong>500Gi</strong>, nodeSelector pinned to masters.</li>
+    <li>AlertManager PVC: <strong>50000Mi</strong> on <code>infra-mon-sc</code>.</li>
+    <li>User-defined project monitoring enabled: <code>enableUserWorkload: true</code>.</li>
+    <li>User workload monitoring: Prometheus retention <strong>7d</strong>, storage class <code>infra-logmon-lvs</code>, <strong>119Gi</strong>; Thanos Ruler tolerations for <code>node-role.kubernetes.io/infra-logmon</code>.</li>
+    <li>AlertManager config edited via Console → Administration → Cluster Settings → Global Configurations → Alertmanager → YAML.</li>
+  </ul>
+
+  <h3 class="sub">Logging</h3>
+  <ul class="tight">
+    <li>Cluster Logging Operator (namespace <code>openshift-logging</code>) + Loki Operator (namespace <code>openshift-operators-redhat</code>).</li>
+    <li><code>LokiStack</code> named <strong><code>logging-loki</code></strong>: size <code>1x.extra-small</code>, retention <strong>30 days</strong>, query timeout 3m, storage class <code>ocs-storagecluster-cephfs</code>, S3 secret <code>loki-obc-secret</code>, TLS CA <code>default-ingress-ca</code>.</li>
+    <li>Visualization: Cluster Observability Operator (COO) <code>UIPlugin</code> of type <code>Logging</code>, <code>logsLimit: 50</code>, <code>timeout: 30s</code> — surfaces in Console → Observe → Logs.</li>
+    <li><code>ClusterLogForwarder</code> named <strong><code>collector</code></strong> ships application/audit/infrastructure logs to the LokiStack via service account <code>logging-collector</code>.</li>
+    <li><strong>Splunk forwarding</strong>: separate <code>ClusterLogForwarder</code> named <strong><code>logging-splunk</code></strong> → Splunk HTTP Event Collector (HEC) at <code>https://iocanalytics-deployer.hq.tnb.com.my:8088</code>, token secret <code>vector-splunk-secret</code> (key <code>hecToken</code>), <code>insecureSkipVerify: true</code>, delivery mode <code>AtLeastOnce</code>, compression <code>gzip</code>, collector memory limit 16Gi/request 512Mi. Pipeline name: <code>aidc-ocp-logs</code>.</li>
+  </ul>
+
+  <h3 class="sub">Compliance Operator</h3>
+  <ul class="tight">
+    <li>Installed to namespace <code>openshift-compliance</code>.</li>
+    <li>Custom <code>ScanSetting</code> named <strong><code>TNB-auto-apply</code></strong>: schedule <code>0 4 * * *</code> (04:00 daily), <code>autoUpdateRemediations: true</code>, <code>autoApplyRemediations: true</code>, <code>strictNodeScan: true</code>, raw result storage class <code>ocs-storagecluster-ceph-rbd</code>, 2Gi PVs, retains last <strong>30</strong> results.</li>
+    <li><code>ScanSettingBinding</code> named <strong><code>TNB-cis-compliance</code></strong> using profiles <code>ocp4-cis</code> and <code>ocp4-cis-node</code> (CIS benchmark).</li>
+    <li>Scans commonly land <strong>NON-COMPLIANT</strong> initially — remediations reviewed before being applied (per doc's own caveat about expected first-run results).</li>
+  </ul>
+
+  <h3 class="sub">Node health / GPU discovery</h3>
+  <ul class="tight">
+    <li><strong>Node Health Check Operator</strong> + <strong>Self Node Remediation Operator</strong> (both in namespace <code>openshift-workload-availability</code>).</li>
+    <li><code>NodeHealthCheck</code> instance <strong><code>worker-availability</code></strong>: <code>minHealthy: 51%</code>, unhealthy condition threshold <strong>60s</strong> (Ready=False or Unknown).</li>
+    <li>Three <code>SelfNodeRemediationTemplate</code>s created: <code>self-node-remediation-automatic-strategy-template</code>, <code>...-oos-taint-template</code>, <code>...-resource-deletion-template</code>.</li>
+    <li><strong>Node Feature Discovery (NFD) Operator</strong> is a prerequisite for the <strong>NVIDIA GPU Operator</strong>; NVIDIA's PCI vendor ID is <code>10de</code>.</li>
+    <li><strong>NVIDIA GPU Operator</strong> ClusterPolicy: <strong><code>gpu-cluster-policy</code></strong> in namespace <code>nvidia-gpu-operator</code> (drivers, device plugin, container toolkit, GFD labeling, DCGM monitoring).</li>
+  </ul>
+</section>
+
+<!-- AUTH INFRA -->
+<section id="auth-infra">
+  <h2 class="section-title">Authentication Posture — Infra Layer <span class="tag red">Munshi's CER</span></h2>
+  <div class="callout gold">
+    At the time of this report, TNB's cluster used <strong>local HTPasswd only</strong> as the active identity provider. LDAP/AD integration is documented <em>as a reference</em> in the report but was <strong>not yet configured</strong> — the doc explicitly warns HTPasswd should only be used for production temporarily / dev environments, not long-term.
+  </div>
+  <ul class="tight">
+    <li>HTPasswd secret: <code>htpasswd-secret-aidc</code>, IdP display name <strong>"Identity Providers (Local)"</strong>.</li>
+    <li>Reference-only LDAP config shown in the doc for a future <strong>"Identity Provider (TNB AD)"</strong>:
+      <ul class="tight">
+        <li>Bind DN: <code>CN=srv.aidc,OU=ServiceAccount,DC=tnb,DC=my</code></li>
+        <li>URL: <code>ldaps://tnbhqsvrdc01.tnb.my:636/DC=tnb,DC=my?sAMAccountName?sub?(objectClass=user)</code></li>
+        <li>Bind password secret: <code>tnb-ad-ldap-bind-secret</code> · CA secret: <code>tnb-ad-ldap-ca-cert</code></li>
+        <li>Attribute mapping: email→<code>mail</code>, id→<code>dn</code>, name→<code>cn</code>, preferredUsername→<code>sAMAccountName</code></li>
+      </ul>
+    </li>
+    <li>RBAC reference group: <code>OCPUAT-CLUSTER-ADM</code> mapped to <code>cluster-admin</code> via <code>oc adm policy add-cluster-role-to-group</code>.</li>
+    <li>Hardening steps documented: delete <code>kubeadmin</code> secret post-IdP setup; remove <strong>self-provisioner</strong> role from <code>system:authenticated:oauth</code> group to stop users from freely creating projects.</li>
+    <li>Custom <code>KubeletConfig</code> (<code>master-custom-kubelet-config</code>): <code>maxPods: 2000</code>, <code>systemReserved</code> cpu <code>2.35</code> / memory <code>17Gi</code>, TLS cipher suites restricted to AES-GCM ECDHE suites, eviction thresholds tuned (hard/soft).</li>
+  </ul>
+  <div class="callout">
+    Important nuance: this HTPasswd-only posture is the <strong>base OCP cluster's</strong> auth story. The <strong>MaaS/RHOAI layer</strong> (Sid's report) later layers <strong>Keycloak federated to Active Directory over LDAPS</strong> on top as the real IdP for the RHOAI dashboard and OpenShift OAuth — see "MaaS Identity" section below. These are two different points in time / two different reports.
+  </div>
+</section>
+
+<!-- BACKUP & CONSOLE -->
+<section id="backup-console">
+  <h2 class="section-title">Backup, Certs &amp; Web Console Customization <span class="tag red">Munshi's CER</span></h2>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>etcd backup</h4>
+      <ul class="tight">
+        <li>CronJob <strong><code>openshift-backup</code></strong> in namespace <code>ocp-etcd-backup</code>, schedule <code>0 19 * * *</code> (7 PM daily).</li>
+        <li>Mounts NFS export <code>10.249.85.100:/ocp-etcd-backup</code> onto a master node via <code>oc debug</code>, runs <code>cluster-backup.sh</code>, then deletes backups older than <strong>4 days</strong> (<code>-mtime +4</code>).</li>
+        <li>Backups land in <code>/home/core/backup</code> on the debugged master, sourced from the bastion NFS share.</li>
+        <li>Doc explicitly warns: don't take an etcd backup before the first cert rotation completes (24h post-install) — it will contain expired certs.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Certificates</h4>
+      <ul class="tight">
+        <li>cert-manager Operator installs namespaces <code>cert-manager-operator</code> + <code>cert-manager</code>.</li>
+        <li>Self-signed root CA generated via CFSSL: CN <strong>"TNB ROOT CA AIDC"</strong> (O=TNB, OU=IT, C=MY, L=KL, ST=KL, RSA 2048).</li>
+        <li><code>ClusterIssuer</code> <strong><code>ca-issuer</code></strong> → <code>Certificate</code> <strong><code>ingress-cert</code></strong> (ECDSA P-256) for <code>*.apps.aidc.tnb.com.my</code>, stored in secret <strong><code>custom-certs-managed</code></strong>, patched onto the default <code>IngressController</code>.</li>
+        <li>Default OCP ingress cert was in use elsewhere — TNB had no immediate requirement to replace it beyond the *.apps wildcard.</li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="sub">Web console branding</h3>
+  <ul class="tight">
+    <li>Custom logo config map <code>custom-tnb-logo</code>; console operator patched with <code>customProductName: TNB AIDC</code>.</li>
+    <li><code>ConsoleNotification</code> <strong><code>aidc-notification</code></strong>: banner top, text <em>"Tenaga Nasional Berhad (TNB), Malaysia Artificial Intelligence (AI) Data Center (DC)"</em>, background <code>#cccecf</code>, text color <code>#fff</code>.</li>
+    <li>Custom login/provider/error page templates generated via <code>oc adm create-login-template</code>, etc., stored as secrets in <code>openshift-config</code>.</li>
+    <li><strong>Issues Faced section of the CER</strong>: at time of writing, "there were no major issues registered for the OCP deployment in the Prod Environment."</li>
+  </ul>
+</section>
+
+<hr style="border:none;border-top:2px dashed var(--border);margin:40px 0;">
+
+<!-- MAAS ARCHITECTURE -->
+<section id="maas-arch">
+  <h2 class="section-title">MaaS / RHOAI Platform Architecture <span class="tag sid">Sid's CER</span></h2>
+  <p class="section-desc">Built on top of the OCP 4.20 base cluster above. Focus: Model-as-a-Service for LLM inference with governed, multi-tenant API access.</p>
+
+  <h3 class="sub">Operator ecosystem</h3>
+  <div class="pill-row">
+    <span class="pill blue">Red Hat OpenShift AI (RHOAI) v3.4</span>
+    <span class="pill blue">Kuadrant (Connectivity Link)</span>
+    <span class="pill blue">Authorino</span>
+    <span class="pill blue">OpenShift Service Mesh</span>
+    <span class="pill blue">NVIDIA GPU Operator</span>
+    <span class="pill blue">Node Feature Discovery</span>
+    <span class="pill blue">Red Hat Build of Keycloak (RHBK)</span>
+    <span class="pill blue">Grafana Operator</span>
+  </div>
+
+  <h3 class="sub">Layered logical architecture (6 layers)</h3>
+  <ol class="tight" style="font-size:14px;">
+    <li><strong>Client/consumer</strong> — application teams / chatbots sending OpenAI-compatible REST API requests.</li>
+    <li><strong>Routing/ingress &amp; governance</strong> — Kuadrant (Red Hat Connectivity Link) API Gateway enforcing <code>AuthPolicy</code> (API Keys) and <code>RateLimitPolicy</code> (RPM/TPM).</li>
+    <li><strong>Model orchestration</strong> — KServe manages serving lifecycle, autoscaling, request concurrency.</li>
+    <li><strong>Model serving</strong> — vLLM ServingRuntime pods, Tensor Parallelism across GPUs.</li>
+    <li><strong>Persistence &amp; observability</strong> — S3 object storage for weights; Prometheus scraping vLLM metrics.</li>
+    <li><strong>Infrastructure</strong> — OpenShift worker nodes with NVIDIA GPUs + NVIDIA GPU Operator.</li>
+  </ol>
+
+  <h3 class="sub">Technology reference table</h3>
+  <table>
+    <tr><th>Component</th><th>Technology</th><th>Notes</th></tr>
+    <tr><td>API Gateway</td><td>Kuadrant (RHCL)</td><td>AuthPolicy, RateLimitPolicy, HTTPRoute</td></tr>
+    <tr><td>Model Orchestrator</td><td>KServe</td><td>InferenceService CRD, KPA autoscaling</td></tr>
+    <tr><td>Inference Engine</td><td>vLLM</td><td>Tensor Parallelism, PagedAttention, continuous batching</td></tr>
+    <tr><td>Model Storage</td><td>S3 object storage (ODF)</td><td>Model weights, tokenizer configs</td></tr>
+    <tr><td>Metrics</td><td>Prometheus</td><td>Scrapes vLLM <code>/metrics</code>; Grafana dashboards</td></tr>
+    <tr><td>GPU Hardware</td><td>NVIDIA H200 / RTX 6000 Pro</td><td>2 GPUs/node, 3 nodes total</td></tr>
+    <tr><td>Platform</td><td>OpenShift</td><td>StatefulSets, pod anti-affinity, PVCs</td></tr>
+  </table>
+
+  <h3 class="sub">Engagement phases (Journal, 10–17 May 2026)</h3>
+  <ul class="tight">
+    <li>Operator installs: RHOAI, NFD, Service Mesh, Kuadrant, Keycloak.</li>
+    <li>Gateway configuration for MaaS; DB configuration for Model Registry / Keycloak / maas-api.</li>
+    <li>Worker node labeling + NVIDIA operator validation.</li>
+    <li>S3 Data Connection + secret configuration; vLLM ServingRuntime deployment.</li>
+    <li>InferenceService (Llama model, initial test) deployed to GPU nodes.</li>
+    <li>Kuadrant <code>AuthPolicy</code> (API Keys) + <code>RateLimitPolicy</code> configured.</li>
+    <li>Prometheus metrics scraping verified; UAT completed.</li>
+  </ul>
+  <p class="section-desc">Explicitly <strong>out of scope</strong> / done separately: platform provisioning (Munshi's report), foundational model training, and cross-cluster disaster recovery.</p>
+</section>
+
+<!-- NAMESPACES -->
+<section id="namespaces">
+  <h2 class="section-title">Namespaces &amp; Request/Auth Traffic Flow <span class="tag sid">Sid's CER</span></h2>
+  <table>
+    <tr><th>Namespace</th><th>Purpose</th></tr>
+    <tr><td><code>openshift-ingress</code></td><td>Primary Gateway resource <strong><code>maas-default-gateway</code></strong> serving external client traffic</td></tr>
+    <tr><td><code>kuadrant-system</code></td><td>Kuadrant control plane + policies (incl. Authorino instance)</td></tr>
+    <tr><td><code>redhat-ods-applications</code></td><td>Core RHOAI <code>DataScienceCluster</code> components</td></tr>
+    <tr><td><code>postgresql</code></td><td>PostgreSQL database instance</td></tr>
+    <tr><td><code>keycloak</code></td><td>Red Hat Build of Keycloak (platform IAM)</td></tr>
+    <tr><td><code>models-as-a-service</code></td><td>Core MaaS tenant components + custom <code>maas-api</code></td></tr>
+    <tr><td><code>llm</code></td><td>All foundational model <code>InferenceService</code>s / <code>LLMInferenceService</code>s deployed &amp; executed here</td></tr>
+    <tr><td><code>grafana</code></td><td>Dedicated Grafana instance for observability</td></tr>
+    <tr><td><code>rhoai-model-registries</code></td><td>Model Registry namespace (per DataScienceCluster config)</td></tr>
+    <tr><td><code>rhods-notebooks</code></td><td>Workbench namespace (per DataScienceCluster config)</td></tr>
+  </table>
+
+  <h3 class="sub">End-to-end traffic flow</h3>
+  <div class="callout blue">
+    <strong>MetalLB LoadBalancer</strong> (on-prem, fixed IP pool) → TLS termination at the <strong>Gateway</strong> in <code>openshift-ingress</code> (hostname <code>maas.apps.aidc.tnb.com.my</code>, ports 80/443, cert via <code>cert-manager-ingress-cert</code>) → <strong>Kuadrant policy enforcement</strong> (Authorino auth check + Limitador rate-limit check) → routed to <strong><code>maas-api</code></strong> in <code>models-as-a-service</code> → forwards to the actual model-serving pods in <code>llm</code> namespace.
+  </div>
+  <ul class="tight">
+    <li><strong>Hardware targeting</strong>: NFD + NVIDIA GPU Operator label nodes by hardware; RHOAI Hardware Profiles route heavy workloads (e.g. GPT-OSS-20B) to the two H200 nodes, lighter workloads (e.g. Qwen2.5-7B) to the RTX 6000 Pro node.</li>
+    <li><strong>Gateway API object</strong>: <code>gateway.networking.k8s.io/v1</code> <code>Gateway</code> named <code>maas-default-gateway</code>, gatewayClassName <code>openshift-default</code>, listener on port 443 (HTTPS) allowing routes from all namespaces, TLS mode <code>Terminate</code>. Annotated <code>opendatahub.io/managed: 'false'</code> and <code>security.opendatahub.io/authorino-tls-bootstrap: 'true'</code>.</li>
+  </ul>
+</section>
+
+<!-- RHOAI DSC & KUADRANT -->
+<section id="dsc-kuadrant">
+  <h2 class="section-title">RHOAI DataScienceCluster &amp; Kuadrant Config <span class="tag sid">Sid's CER</span></h2>
+  <h3 class="sub">DataScienceCluster (<code>default-dsc</code>) component states</h3>
+  <div class="two-col-note">
+    <div>
+      <h4 class="subsub">Managed</h4>
+      <ul class="tight">
+        <li><code>aipipelines</code> (incl. <code>argoWorkflowsControllers</code>)</li>
+        <li><code>dashboard</code></li>
+        <li><code>kserve</code> (with <code>modelsAsService: Managed</code>, <code>nim: Managed</code> non-air-gapped, <code>rawDeploymentServiceConfig: Headless</code>)</li>
+        <li><code>llamastackoperator</code></li>
+        <li><code>modelregistry</code> (namespace <code>rhoai-model-registries</code>)</li>
+        <li><code>trustyai</code> (<code>mcpGuardrailsMode: false</code>; lmeval <code>permitCodeExecution</code>/<code>permitOnline: deny</code>)</li>
+        <li><code>workbenches</code> (namespace <code>rhods-notebooks</code>)</li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="subsub">Removed</h4>
+      <ul class="tight">
+        <li><code>feastoperator</code></li>
+        <li><code>kueue</code> (flagged in Next Steps as a future add)</li>
+        <li><code>mlflowoperator</code></li>
+        <li><code>ray</code></li>
+        <li><code>trainer</code></li>
+        <li><code>trainingoperator</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sub">Kuadrant &amp; Authorino</h3>
+  <ul class="tight">
+    <li><code>Kuadrant</code> CR named <strong><code>kuadrant</code></strong> in <code>kuadrant-system</code>.</li>
+    <li><strong>Limitador</strong> configured with <code>RateLimitPolicy</code> on the Gateway — limits by <strong>Requests-Per-Minute (RPM)</strong> and <strong>Tokens-Per-Minute (TPM)</strong>.</li>
+    <li><strong>Authorino</strong> instance <code>authorino</code>, <code>clusterWide: true</code>, TLS via secret <code>authorino-server-cert</code> for both external listener and internal OIDC server.</li>
+    <li><code>AuthPolicy</code> directs Authorino to call the internal <strong><code>maas-api</code></strong> validation endpoint to check API keys sent in the HTTP <code>Authorization</code> header — if valid, traffic proceeds to the model serving namespace.</li>
+  </ul>
+</section>
+
+<!-- MAAS IDENTITY -->
+<section id="maas-identity">
+  <h2 class="section-title">MaaS Identity — Keycloak / AD Federation <span class="tag sid">Sid's CER</span></h2>
+  <ul class="tight">
+    <li>Red Hat Build of Keycloak (RHBK) deployed in namespace <code>keycloak</code>; <strong>1 instance</strong>, HTTPS port <code>8443</code>, TLS secret <code>keycloak-internal-tls</code>.</li>
+    <li>Database: dedicated PostgreSQL instance (namespace <code>postgresql</code>), PVCs backed by IBM Storage Fusion/ODF. DB secret <code>keycloak-db-secret</code> — database name <code>keycloak</code>, host <code>postgresql.postgresql.svc.cluster.local</code>, port <code>5432</code>, username <code>sso-admin</code>.</li>
+    <li><strong>Active Directory federation over LDAPS</strong>: a Keycloak Realm + User Federation provider syncs users directly from corporate AD.</li>
+    <li><strong>Group mappings</strong>: LDAP Group Mappers translate AD groups into OpenShift roles — e.g. an AD <code>AI-Admins</code> group maps to <code>cluster-admin</code> / RHOAI admin roles.</li>
+    <li><strong>OpenShift OAuth integration</strong>: an OIDC client (<code>openshift-oauth</code>) is created in Keycloak; OpenShift's global OAuth CR is updated to use Keycloak as an <code>OpenID</code> identity provider — issuer <code>https://sso.apps.aidc.tnb.com.my/realms/openshift</code>, client secret <code>keycloak-oauth-client-secret</code>, claims mapped for email/groups/name/preferredUsername.</li>
+    <li>Because RHOAI inherits auth from OpenShift Auth, Keycloak <strong>implicitly secures the RHOAI dashboard</strong> and workbench access.</li>
+    <li>Custom TNB Keycloak theme: <code>tnb-keycloak-theme.jar</code>, mounted via configmap <code>tnb-theme</code> into the Keycloak pod template.</li>
+    <li><strong>Important distinction</strong>: Kuadrant (the API Gateway for inference traffic) does <strong>NOT</strong> integrate directly with Keycloak — inference API auth is handled separately via API Keys + <code>maas-api</code> validation, not SSO/OIDC. Keycloak secures human/dashboard access; Kuadrant/Authorino secures machine/API traffic.</li>
+  </ul>
+</section>
+
+<!-- MODELS & GOVERNANCE -->
+<section id="models">
+  <h2 class="section-title">Models Deployed &amp; Governance CRs <span class="tag sid">Sid's CER</span></h2>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>Qwen2.5-7B-Instruct-AWQ</h4>
+      <p style="font-size:14px;margin:0;">Deployed on the <strong>RTX 6000 Pro</strong> node (<code>aidc6k03</code>). Lighter model, quantized (AWQ).</p>
+      <p style="font-size:14px;margin:8px 0 0;">CR name: <code>qwen25-7b-instruct-awq</code>, namespace <code>llm</code>, model URI <code>pvc://qwen25-7b-instruct-awq/Qwen2.5-7B-Instruct-AWQ</code>.</p>
+    </div>
+    <div class="card">
+      <h4>GPT-OSS-20B</h4>
+      <p style="font-size:14px;margin:0;">Deployed on the two <strong>H200</strong> nodes. Heavier model requiring the highest-tier GPUs.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">LLMInferenceService — example spec (Qwen2.5-7B-Instruct-AWQ)</h3>
+  <pre><code>apiVersion: serving.kserve.io/v1alpha2
+kind: LLMInferenceService
+metadata:
+  name: qwen25-7b-instruct-awq
+  namespace: llm
+  annotations:
+    openshift.io/display-name: Qwen2.5-7B-Instruct-AWQ
+    opendatahub.io/model-type: generative
+    opendatahub.io/hardware-profile-name: nvidia-gpu
+spec:
+  model:
+    name: qwen25-7b-instruct-awq
+    uri: pvc://qwen25-7b-instruct-awq/Qwen2.5-7B-Instruct-AWQ
+  replicas: 1
+  router:
+    gateway:
+      refs:
+        - name: maas-default-gateway
+          namespace: openshift-ingress
+  template:
+    containers:
+      - name: main
+        env:
+          - name: VLLM_ADDITIONAL_ARGS
+            value: >-
+              --trust-remote-code
+              --gpu-memory-utilization=0.9
+              --max-model-len=4096
+              --enforce-eager
+              --max-num-seqs=4
+        resources:
+          requests: {cpu: "2", memory: 4Gi, nvidia.com/gpu: "1"}
+          limits:   {cpu: "2", memory: 4Gi, nvidia.com/gpu: "1"}</code></pre>
+  <p class="section-desc">Notice the CRD is the newer, purpose-built <strong><code>LLMInferenceService</code></strong> (<code>serving.kserve.io/v1alpha2</code>) rather than a classic KServe <code>InferenceService</code> + separate <code>ServingRuntime</code> — it natively embeds vLLM args, node targeting, and Gateway routing in one resource.</p>
+
+  <h3 class="sub">Governance CRs: MaaSSubscription &amp; MaaSAuthPolicy</h3>
+  <pre><code>apiVersion: maas.opendatahub.io/v1alpha1
+kind: MaaSSubscription
+metadata:
+  name: free-tier-subs
+  namespace: models-as-a-service
+spec:
+  modelRefs:
+    - name: qwen25-7b-instruct-awq
+      namespace: llm
+      tokenRateLimits:
+        - limit: 1000
+          window: 1h
+  owner:
+    groups:
+      - name: free-tier-maas
+  priority: 0
+---
+apiVersion: maas.opendatahub.io/v1alpha1
+kind: MaaSAuthPolicy
+metadata:
+  name: free-tier-maas-policy
+  namespace: models-as-a-service
+spec:
+  modelRefs:
+    - name: qwen25-05b-instruct
+      namespace: llm
+  subjects:
+    groups:
+      - name: free-tier-maas</code></pre>
+  <ul class="tight">
+    <li><strong><code>MaaSSubscription</code></strong> binds a Keycloak-managed group (e.g. <code>free-tier-maas</code>) to a model, defining token generation limits Kuadrant/Limitador enforces (example: <strong>1000 tokens/hour</strong>).</li>
+    <li><strong><code>MaaSAuthPolicy</code></strong> restricts inference access to only members of the designated group.</li>
+  </ul>
+</section>
+
+<!-- OBSERVABILITY -->
+<section id="observability">
+  <h2 class="section-title">Observability Chain <span class="tag sid">Sid's CER</span></h2>
+  <ul class="tight">
+    <li>vLLM natively exposes a <code>/metrics</code> endpoint; OpenShift <strong>user-workload monitoring</strong> scrapes it automatically.</li>
+    <li>Key vLLM metrics: <code>vllm:num_requests_running</code> (concurrent queries), <code>vllm:gpu_cache_usage_perc</code> (OOM early warning), <code>vllm:prompt_tokens_total</code> / <code>vllm:generation_tokens_total</code> (chargeback/throughput).</li>
+    <li>Dedicated <strong>Grafana</strong> instance (namespace <code>grafana</code>) provisioned via Grafana Operator; exposes an admin route backed by <code>grafana-service</code>.</li>
+    <li><code>GrafanaDatasource</code> <strong><code>prometheus-datasource</code></strong> connects to the cluster's built-in <strong>Thanos Querier</strong> (<code>https://thanos-querier.openshift-monitoring.svc.cluster.local:9091</code>) via a Bearer-token ServiceAccount, <code>tlsSkipVerify: true</code>, 5s refresh interval.</li>
+    <li><code>GrafanaDashboard</code> <strong><code>vllm-inference-dashboard</code></strong> (uid <code>b281712d-8bff-41ef-9f3f-71ad43c05e9b7</code>) queries <code>kserve_vllm:*</code> metrics, covering:
+      <ul class="tight">
+        <li>Latency: E2E request latency, Time-To-First-Token (TTFT), Inter-Token Latency (P50/P90/P95/P99/Mean)</li>
+        <li>Throughput: prompt tokens/sec, generation tokens/sec</li>
+        <li>Resource utilization: GPU &amp; CPU KV-cache usage % (OOM prevention)</li>
+        <li>Scheduler state: requests RUNNING / WAITING / SWAPPED</li>
+        <li>Workload profiling: prompt/generation length heatmaps, finish reasons (EOS vs. sequence limit)</li>
+      </ul>
+    </li>
+    <li>GPU-level metrics validated in UAT via a <strong>DCGM GPU Metrics Dashboard</strong> in Grafana (NVIDIA Data Center GPU Manager).</li>
+  </ul>
+</section>
+
+<!-- QOS -->
+<section id="qos">
+  <h2 class="section-title">Quality of Service Strategy <span class="tag sid">Sid's CER</span></h2>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>High Availability</h4>
+      <p style="font-size:14px;margin:0;">Achieved via <strong>Knative autoscaling + pod anti-affinity</strong>. When traffic scales an <code>InferenceService</code> to multiple replicas, anti-affinity rules spread pods across GPU-enabled physical hosts, protecting against single-node failure.</p>
+    </div>
+    <div class="card">
+      <h4>Failover</h4>
+      <p style="font-size:14px;margin:0;">If an inference pod crashes (e.g. CUDA OOM), the <strong>KServe controller</strong> auto-provisions a replacement. Client traffic is briefly queued by the <strong>Knative Activator</strong> until the new pod finishes downloading the model and becomes Ready.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POLICIES / PRINCIPLES / ADRS -->
+<section id="records">
+  <h2 class="section-title">Architectural Records — Policies, Principles &amp; ADRs <span class="tag sid">Sid's CER</span></h2>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>POLICY-001 — Centralized Identity Management</h4>
+      <p style="font-size:14px;margin:0;">All users/admin access must authenticate through corporate AD; local accounts must not be used for production platform access. Source: TNB IAM standards. Related: ADR-004, "Use Keycloak as Centralized IAM Broker."</p>
+    </div>
+    <div class="card">
+      <h4>POLICY-002 — On-Premises Data Sovereignty</h4>
+      <p style="font-size:14px;margin:0;">Foundational models, training weights, and user prompt payloads must remain entirely on-prem. Cloud-based LLM APIs cannot be used. Related: baremetal compact cluster + IBM Storage Fusion (ODF) integration.</p>
+    </div>
+    <div class="card">
+      <h4>PRINCIPLE-001 — Decoupled Governance from Model Serving</h4>
+      <p style="font-size:14px;margin:0;">vLLM must be dedicated entirely to inferencing; auth/authz/rate-limiting must be fully decoupled and handled at the edge (Gateway layer). Motivation: consistent security/billing governance regardless of model/runtime. Related: ADR-002, "Use Kuadrant for API Governance."</p>
+    </div>
+    <div class="card">
+      <h4>PRINCIPLE-002 — Hardware-Aware Workload Scheduling</h4>
+      <p style="font-size:14px;margin:0;">AI workloads must be explicitly targeted to physical nodes via RHOAI hardware profiles/node selectors to differentiate H200 vs. RTX 6000 Pro tiers. Motivation: prevent resource contention, ensure heavy models land on the strongest GPUs.</p>
+    </div>
+    <div class="card">
+      <h4>ADR-001 — Selection of vLLM as Serving Runtime</h4>
+      <p style="font-size:14px;margin:0;">Decision: use vLLM for all LLM InferenceServices. Justification: PagedAttention minimizes GPU memory fragmentation; continuous batching boosts throughput. No formal alternatives evaluated.</p>
+    </div>
+    <div class="card">
+      <h4>ADR-002 — Use Kuadrant for API Governance</h4>
+      <p style="font-size:14px;margin:0;">Decision: deploy Kuadrant (RHCL) + Authorino + Limitador rather than a standalone NGINX ingress or third-party gateway (e.g. Kong). Justification: natively supported within the OpenShift MaaS architecture; integrates seamlessly with the <code>maas-api</code> control plane.</p>
+    </div>
+  </div>
+</section>
+
+<!-- UAT -->
+<section id="uat">
+  <h2 class="section-title">UAT / Validation — 15 Test Cases <span class="tag sid">Sid's CER</span></h2>
+  <p class="section-desc">All 15 test cases (TC-01 through TC-15) passed. <span class="status-pass">Result: Success</span> across the board.</p>
+  <table>
+    <tr><th>ID</th><th>What it validated</th></tr>
+    <tr><td><code>TC-01</code></td><td>MaaS backend &amp; operator readiness — <code>maas-api</code> pods in <code>redhat-ods-applications</code>, Authorino pod in <code>kuadrant-system</code></td></tr>
+    <tr><td><code>TC-02</code></td><td>Model Registry availability in RHOAI Dashboard → AI Hub → Registry</td></tr>
+    <tr><td><code>TC-03</code></td><td>Model registration — new model version (e.g. <code>qwen2-5-3b</code>) linked to source URI (S3 or Hugging Face)</td></tr>
+    <tr><td><code>TC-04</code></td><td>Deploy model via Dashboard wizard — Distributed inference with <strong>llm-d</strong> runtime, published as MaaS endpoint with tier access</td></tr>
+    <tr><td><code>TC-05</code></td><td>AI asset endpoint discovery in Gen AI Studio UI</td></tr>
+    <tr><td><code>TC-06</code></td><td>User-tier mapping via Keycloak group assignment vs. RHOAI tier-to-group ConfigMap</td></tr>
+    <tr><td><code>TC-07</code></td><td>MaaS API key generation from AI asset endpoint UI</td></tr>
+    <tr><td><code>TC-08</code></td><td>Request auth <strong>denied</strong> — curl without Bearer token</td></tr>
+    <tr><td><code>TC-09</code></td><td>Request auth <strong>success</strong> — curl with <code>Authorization: Bearer &lt;API_KEY&gt;</code></td></tr>
+    <tr><td><code>TC-10</code></td><td>Multi-tier access control — Free-tier user exceeding rate limit → "too many requests"</td></tr>
+    <tr><td><code>TC-11</code></td><td>Launch Workbench + run a notebook cell (e.g. <code>print("Hello RHOAI")</code>)</td></tr>
+    <tr><td><code>TC-12</code></td><td>GPU utilization visible in Grafana (DCGM GPU Metrics Dashboard)</td></tr>
+    <tr><td><code>TC-13</code></td><td>Model &amp; API logging — model load success in llm-d logs; <code>maas-api</code> logs checked via <code>oc logs</code></td></tr>
+    <tr><td><code>TC-14</code></td><td>Monitoring/Prometheus — CPU/memory/latency graphs; query <code>vllm:request_success_total</code></td></tr>
+    <tr><td><code>TC-15</code></td><td>S3/object storage access — data connection + boto3/mc CLI listing + model pod pulling weights on init</td></tr>
+  </table>
+</section>
+
+<!-- NEXT STEPS -->
+<section id="nextsteps">
+  <h2 class="section-title">Next Steps, Training &amp; Knowledge Transfer <span class="tag sid">Sid's CER</span></h2>
+
+  <h3 class="sub">Technical next steps</h3>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>MIG — Multi-Instance GPU</h4>
+      <p style="font-size:14px;margin:0;">A single H200 can be securely partitioned into up to <strong>7</strong> isolated GPU instances, letting the platform serve multiple smaller models concurrently on one card (huge density/ROI gain). <strong>Note: RTX 6000 Pro does NOT support MIG</strong> — this optimization targets only the data-center-class H200 nodes.</p>
+    </div>
+    <div class="card">
+      <h4>Kueue — Job Queuing &amp; Quotas</h4>
+      <p style="font-size:14px;margin:0;">Currently <code>kueue</code> is <strong>Removed</strong> in the DSC. Recommended addition to manage job queuing/resource quotas for async batch, training, and fine-tuning workloads across tenants, plus "Fair Share" quotas so no single team monopolizes GPU capacity.</p>
+    </div>
+  </div>
+
+  <h3 class="sub">Recommended training</h3>
+  <ul class="tight">
+    <li><strong>AI267</strong> — Developing and Deploying AI/ML on Red Hat OpenShift AI (for ML Engineers/Data Scientists — MLOps/LLMOps lifecycle).</li>
+    <li><strong>DO288</strong> — Building and Deploying Cloud-native Applications (foundational containerization skills; recommended <em>prerequisite</em> to AI267).</li>
+  </ul>
+
+  <h3 class="sub">Knowledge Transfer (KT) session plan</h3>
+  <table>
+    <tr><th>Session</th><th>Audience</th><th>Topics</th></tr>
+    <tr>
+      <td><strong>1. Platform Architecture, Governance &amp; Operations</strong></td>
+      <td>Platform Admins, Infra, Security, Ops</td>
+      <td>Decoupled architecture &amp; hot path (Gateway TLS → Authorino Auth → Limitador rate checks → LLMInferenceService); Identity &amp; access (Keycloak admin, Postgres backend, AD/LDAPS federation, AD→OCP role translation); API key lifecycle (minting/validation/revocation via <code>maas-api</code>); Observability &amp; troubleshooting (Grafana/Thanos, vLLM telemetry TTFT/KV cache, DCGM GPU metrics, log filtering)</td>
+    </tr>
+    <tr>
+      <td><strong>2. Model Lifecycle, Subscriptions &amp; End-User Experience</strong></td>
+      <td>ML Engineers, Data Scientists, Platform Admins</td>
+      <td>Model onboarding (LLMInferenceService targeting H200/RTX 6000 Pro, S3/ODF connections); Governance &amp; subscriptions (<code>MaaSSubscription</code>/<code>MaaSAuthPolicy</code>, TPM/RPM tuning); API testing &amp; workbenches (API key generation from UI, cURL/Python inference, Jupyter workbenches)</td>
+    </tr>
+  </table>
+</section>
+
+<!-- DON'T MISS -->
+<section id="dontmiss">
+  <h2 class="section-title">Don't Miss — Small But Memorable Details <span class="tag both">Both docs</span></h2>
+  <div class="grid cols-2">
+    <div class="card">
+      <h4>From Munshi's CER</h4>
+      <ul class="tight">
+        <li>Bootstrap completed <strong>6 May 2026, 17:33:58 +08:00</strong>; full cluster install complete same evening at <strong>17:56:28 +08:00</strong> — under 25 minutes between the two.</li>
+        <li>The MaaS DNS record (<code>maas.apps.aidc.tnb.com.my → 10.249.80.201</code>) was already reserved in Munshi's DNS table — meaning MetalLB's pool start IP was planned before Sid's MaaS engagement even began.</li>
+        <li>MetalLB pool for MaaS: <code>10.249.80.201–10.249.80.225</code> (25 addresses), pool name <code>maas-l2-pool</code>, auto-assign enabled.</li>
+        <li>etcd backups auto-delete anything older than <strong>4 days</strong> — short retention, worth knowing before assuming longer DR coverage exists.</li>
+        <li>Compliance scans are expected to come back <strong>NON-COMPLIANT</strong> on first run — that's normal, not a failure; remediations are reviewed before being applied.</li>
+        <li>Custom root CA is literally named <strong>"TNB ROOT CA AIDC"</strong> (visible in the CFSSL CSR JSON).</li>
+        <li>Splunk log forwarding endpoint: <code>iocanalytics-deployer.hq.tnb.com.my:8088</code> — a very specific, easy-to-forget internal hostname.</li>
+        <li>Backup network runs on VLAN <strong>3501</strong> across all three nodes via <code>bond1.3501</code>.</li>
+        <li>Kubelet <code>maxPods</code> is explicitly raised to <strong>2000</strong> per node via KubeletConfig — well above the OCP default of 250.</li>
+        <li>The report's own "Issues Faced" section says: no major issues registered for Prod deployment at time of writing.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>From Sid's CER</h4>
+      <ul class="tight">
+        <li>Free-tier example subscription caps usage at just <strong>1000 tokens/hour</strong> — a very tight default rate limit for a "free" tier.</li>
+        <li>GPT-OSS-20B (the big model) always runs on the two H200 nodes; the RTX 6000 Pro node is reserved for smaller/quantized models like Qwen2.5-7B-Instruct-AWQ.</li>
+        <li>MIG can split one H200 into <strong>up to 7</strong> isolated instances — but this trick is <strong>not available</strong> on the RTX 6000 Pro at all.</li>
+        <li>Kuadrant/Authorino deliberately does <strong>not</strong> use Keycloak/OIDC for inference traffic — API-key validation goes through <code>maas-api</code> instead, a distinct trust boundary from human/dashboard SSO.</li>
+        <li>The vLLM inference dashboard tracks <strong>GPU cache usage %</strong> specifically as an early-warning signal for out-of-memory (OOM) conditions — worth remembering as the "canary" metric.</li>
+        <li>Kueue is presently <strong>disabled</strong> (<code>managementState: Removed</code>) in the DataScienceCluster even though it's a named next step — it's a deliberate deferral, not an oversight.</li>
+        <li>DO288 is the recommended <em>prerequisite</em> course for AI267, not a parallel/optional one.</li>
+        <li>All 3 GPU-bearing nodes across both reports are the same physical hardware — Sid's "3 GPU-enabled nodes, 2 GPUs each" ties directly back to the exact hostnames (<code>aidch200nvl01/02</code>, <code>aidc6k03</code>) named in Munshi's report.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="page-footer">
+  Personal reference cheat sheet compiled from two Red Hat Consulting Engagement Reports for Tenaga Nasional Berhad (TNB) — for internal recall only, not a customer deliverable.
+</footer>
+
+</body>
+</html>
